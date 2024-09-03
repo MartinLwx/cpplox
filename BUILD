@@ -3,5 +3,6 @@ cc_binary(
     srcs = ["main.cpp", "debug.cpp", "debug.h"],
     deps = [
         "//instruction:chunk",
+        "//value:value",
     ],
 )

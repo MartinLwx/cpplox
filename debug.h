@@ -4,6 +4,6 @@
 #include "instruction/chunk.h"
 
 void disassembleChunk(const Chunk *chunk, std::string_view name);
-int disassembleInstruction(OpCode opcode, int offset);
+int disassembleInstruction(const Chunk *chunk, int offset);
 
 #endif

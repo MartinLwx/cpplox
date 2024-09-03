@@ -3,4 +3,5 @@ cc_library(
     srcs = ["chunk.cpp"],
     hdrs = ["chunk.h"],
     visibility = ["//visibility:public"],
+    deps = ["//value:value"],
 )
