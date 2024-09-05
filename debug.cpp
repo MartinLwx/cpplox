@@ -11,7 +11,7 @@ static int simpleInstruction(std::string_view name, int offset) {
 
 static int constantInstruction(std::string_view name, const Chunk *chunk,
                                int offset) {
-  auto constant_idx{chunk->getCode()[offset + 1]};
+  int constant_idx{chunk->getCode()[offset + 1]};
   std::cout << std::left << std::setw(16) << name;
   std::cout << std::right << std::setw(4) << constant_idx << " '";
   std::cout << chunk->getValueArray()[constant_idx];
@@ -29,6 +29,14 @@ void disassembleChunk(const Chunk *chunk, std::string_view name) {
 int disassembleInstruction(const Chunk *chunk, int offset) {
   std::cout << std::setw(4) << std::setfill('0') << offset << " "
             << std::setfill(' ');
+
+  if (offset > 0 &&
+      chunk->getLines()[offset] == chunk->getLines()[offset - 1]) {
+    // the same source line as the preceding one
+    std::cout << "   | ";
+  } else {
+    std::cout << std::setw(4) << chunk->getLines()[offset] << " ";
+  }
 
   auto instruction{chunk->getCode()[offset]};
 

@@ -12,13 +12,15 @@ enum OpCode : std::uint8_t {
 
 class Chunk {
 public:
-  void write(std::uint8_t byte);
+  void write(std::uint8_t byte, int lineno);
   int addConstant(Value value);
   const std::vector<std::uint8_t> &getCode() const { return code_; }
+  const std::vector<int> &getLines() const { return lines_; }
   const ValueArray &getValueArray() const { return constants_; }
 
 private:
   std::vector<std::uint8_t> code_;
+  std::vector<int> lines_;
   ValueArray constants_;
 };
 
