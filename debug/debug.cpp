@@ -1,4 +1,4 @@
-#include "debug.h"
+#include "debug/debug.h"
 #include "instruction/chunk.h"
 #include <iomanip>
 #include <iostream>

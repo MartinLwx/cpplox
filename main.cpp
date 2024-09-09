@@ -1,5 +1,6 @@
-#include "debug.h"
+#define DEBUG_TRACE_EXECUTION
 #include "instruction/chunk.h"
+#include "vm/vm.h"
 
 int main() {
   Chunk chunk{}; // value initialization
@@ -7,5 +8,7 @@ int main() {
   chunk.write(OpCode::OP_CONSTANT, 123);
   chunk.write(index, 123);
   chunk.write(OpCode::OP_RETURN, 123);
-  disassembleChunk(&chunk, "test chunk");
+
+  VM vm;
+  vm.interpret(&chunk);
 }
